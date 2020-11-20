@@ -117,7 +117,7 @@ const topElem = document.getElementById('top')
 const bottom = document.getElementById('bottom')
 
 const createGrid = (gridsize) => {
-  if (gridsize > 50) {
+  if (gridsize > 70) {
     alert("The browser will be stuck, please consider redoing this");
     return;
   }
@@ -127,9 +127,10 @@ const createGrid = (gridsize) => {
       deleted[0].remove();
     }
   }
- 
+ if (gridsize > 0) {
   topElem.style.width = bottom.style.width = `${gridsize * 45}`
   bottom.innerHTML = `${(gridsize**2) + 1}`
+}
 
 
   const targetdiv = document.getElementById("beforeGrid");
@@ -138,9 +139,16 @@ const createGrid = (gridsize) => {
     const newDiv = document.createElement("div");
     newDiv.classList.add("row-grid");
     for (let j = 0; j < gridsize; j++) {
+      if (gridsize < 15) {
       newDiv.innerHTML += `<div class="number" id="${j + gridsize * i + 1}">${
         j + gridsize * i + 1
       }</div>`;
+    }
+    else {
+      newDiv.style.height = `${500/gridsize}px`
+      console.log(600/gridsize)
+      newDiv.innerHTML += `<div class="number" style="width: ${(500/(gridsize))}px; border: 1px solid rgb(131, 178, 240) " id="${j + gridsize * i + 1}"></div>`
+    }
     }
     newDiv.style.gridTemplateColumns = createColumns(gridsize);
     parent.insertBefore(newDiv, targetdiv);
