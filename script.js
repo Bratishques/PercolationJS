@@ -80,7 +80,6 @@ const createGrid = (gridsize) => {
 
 
 button.addEventListener("click", () => {
-  createGrid(input.value)
   input.disabled = true
   button.disabled = true
   const elements = document.getElementsByClassName("number");
