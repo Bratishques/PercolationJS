@@ -13,7 +13,7 @@ const topElem = document.getElementById('top')
 const bottom = document.getElementById('bottom')
 const targetdiv = document.getElementById("bottom");
 const parent = document.getElementById("common-parent");
-let gridMemo = input.value
+let gridMemo = false
 
 
 
@@ -80,6 +80,11 @@ const createGrid = (gridsize) => {
 
 
 button.addEventListener("click", () => {
+  if (gridMemo) {
+    createGrid(input.value)
+    
+  }
+  gridMemo = true
   input.disabled = true
   button.disabled = true
   const elements = document.getElementsByClassName("number");
